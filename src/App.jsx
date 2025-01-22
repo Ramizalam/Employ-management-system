@@ -4,19 +4,23 @@ import EmployeDashboard from './Components/Dashboard/EmployeDashboard'
 import AdminDashboard from './Components/Dashboard/AdminDashboard'
 import { setLocalStorage } from './utils/localStorage'
 import { AuthContext } from './utils/AuthProvider'
+import { data } from 'autoprefixer'
 
 const App = () => {
  const [user, setUser] = useState(null)
  const [loggedInUserData, setLoggedInUserData] = useState(null)
  const authdata = useContext(AuthContext)
 
-//  useEffect(() => { 
-//    if(authdata){
-//    const  loggedInUser = localStorage.getItem("loggedInUser")
-//    if(loggedInUser){
-//     setUser(loggedInUser.role)
-//    }
-//    } }, [authdata]);
+useEffect(() => {
+  const loggedInUser = localStorage.getItem('loggedInUser')
+  if(loggedInUser){
+    const userData = JSON.parse(loggedInUser)
+    setUser(userData.role)
+    setLoggedInUserData(userData.data)
+  }
+ 
+}, [])
+
 
  const handleLogin = (email, password) => {
   console.log('Email:', email);
@@ -24,14 +28,14 @@ const App = () => {
   console.log('Auth Data:', authdata);
 
   if (email === 'admin@me.com' && password === '123') {
-    setUser({role:'admin'})
+    setUser('admin')
     localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}))
   } else if (authdata) {
     const employee = authdata.employees.find((e) => e.email === email && e.password === password)
     if (employee) {
-      setUser({role:employee});
+      setUser('employee');
       setLoggedInUserData(employee)
-      localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
+      localStorage.setItem('loggedInUser',JSON.stringify({role:'employee',data:employee}))
     }
    
   } else {
@@ -44,7 +48,7 @@ const App = () => {
   return (
     <div>
       {!user? <Login handleLogin= {handleLogin}/>: ' '}   
-      {user === 'admin' ? <AdminDashboard/> : (user ==employee?<EmployeDashboard data ={loggedInUserData} /> : null )}
+      {user === 'admin' ? <AdminDashboard/> : ( user  == 'employee' ? <EmployeDashboard data ={loggedInUserData} /> : null )}
       
     </div>
   )
