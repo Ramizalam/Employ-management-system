@@ -9,10 +9,18 @@ const AuthProvider = ({children}) => {
   const {employees, admin} = getLocalStorage()
     setUserData({employees,admin})
  }, [])
+
+ const updateEmployees = (newEmployees) => {
+  setUserData((prevState) => ({
+    ...prevState,
+    employees: newEmployees
+  }));
+  localStorage.setItem('employees', JSON.stringify(newEmployees));
+};
  
   return (
     <div>
-      <AuthContext.Provider value={userData}>
+      <AuthContext.Provider value={{ ...userData, updateEmployees }}>
       {children}
       </AuthContext.Provider>
       

@@ -1,21 +1,22 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 
-const  Header = ({data ={}}) => {
+const  Header = (props) => {
   const [userName, setUserName] = useState(null)
+  const data = props.data;
   useEffect(() => {
     const name = () => {
-      if (data.firstName) {
+      if (data && data.firstName) {
         setUserName(data.firstName);
       } else {
         setUserName('admin');
       }
     };
     name();
-  }, [data.firstName]);
+  }, [data]);
   const logOutUser = () =>{
     localStorage.setItem('loggedInUser','')
-    window.location.reload()
+    props.changeUser('')
   }
   return (
     <div className='flex justify-between items-end'>
