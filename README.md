@@ -15,37 +15,46 @@ The Employee Management System is a web application designed to manage employee 
 - **Local Storage**: Used for storing employee and admin data.
 
 ## Installation
-1. Clone the repository:
+
+1. **Clone the repository**:  
    ```bash
    git clone https://github.com/yourusername/employee-management-system.git
-   Navigate to the project directory:
+   ```
 
-bash
-cd employee-management-system
-Install dependencies:
+2. **Navigate to the project directory**:  
+   ```bash
+   cd employee-management-system
+   ```
 
-bash
-npm install
-Start the development server:
+3. **Install dependencies**:  
+   ```bash
+   npm install
+   ```
 
-bash
-npm run dev
-Usage
-Open your browser and navigate to http://localhost:5173/.
+4. **Start the development server**:  
+   ```bash
+   npm run dev
+   ```
 
-Log in using the following credentials:
-Admin: admin@me.com / 123
-Employee: Use any of the employee emails and passwords from the localStorage.jsx file.
+## Usage
 
-File Structure
-src/Components/Auth/Login.jsx: Login component for both employees and admins.
-src/Components/Dashboard/EmployeDashboard.jsx: Dashboard component for employees.
-src/Components/Dashboard/AdminDashboard.jsx: Dashboard component for admins.
-src/utils/localStorage.jsx: Utility functions for setting and getting data from local storage.
-src/utils/AuthProvider.jsx: Context provider for authentication data.
+1. Open your browser and navigate to [http://localhost:5173/](http://localhost:5173/).  
+2. Log in using the following credentials:  
+   - **Admin**: `admin@me.com` / `123`  
+   - **Employee**: Use any employee email and password from the `localStorage.jsx` file.
 
-Contributing
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
+## File Structure
 
-Contact
-For any questions or feedback, please contact ranizalam63@gmail.com
+- `src/Components/Auth/Login.jsx`: Login component for both employees and admins.  
+- `src/Components/Dashboard/EmployeDashboard.jsx`: Dashboard component for employees.  
+- `src/Components/Dashboard/AdminDashboard.jsx`: Dashboard component for admins.  
+- `src/utils/localStorage.jsx`: Utility functions for setting and getting data from local storage.  
+- `src/utils/AuthProvider.jsx`: Context provider for authentication data.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository, make your changes, and submit a pull request.
+
+## Contact
+
+For any questions or feedback, please contact [ranizalam63@gmail.com](mailto:ranizalam63@gmail.com).
